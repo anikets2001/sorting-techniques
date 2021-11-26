@@ -1,0 +1,45 @@
+//Shell sort
+#include<iostream>
+using namespace std;
+
+void ShellSort(int arr[],int n)
+{
+  for(int gap=n/2;gap>=1;gap/=2)
+  {
+    for(int i=gap;i<n;i++)
+     {
+     int  temp=arr[i];
+      int j=i-gap;
+      
+      while(j>=0 && arr[j]>temp)
+      {
+       arr[j+gap]=arr[j];
+       j=j-gap;
+      }
+      arr[j+gap]=temp;
+
+   }
+ }
+}
+int main()
+{
+ int arr[]={11,13,7,12,16,9,24,5,10,3};
+ int length=sizeof(arr)/sizeof(arr[0]);
+ 
+ cout<<"Original array: "<<endl;
+ for(int i=0;i<length;i++)
+ {
+     cout<<arr[i]<<" "; 
+ }
+ cout<<endl;
+ 
+ ShellSort(arr,length);
+
+ cout<<"Sorted array: "<<endl;
+ for(int i=0;i<length;i++)
+ {
+     cout<<arr[i]<<" ";
+ }
+
+ return 0;
+}
